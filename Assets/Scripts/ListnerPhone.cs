@@ -1,15 +1,16 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phone  : MonoBehaviour
+public class ListnerPhone : MonoBehaviour
 {
     private CallObject currentCall;
     private AudioSource audioSource;
     private PhoneManager phoneManager;
-    private bool isCalling = false;
     private float hangUpDelay = 1f;
     [SerializeField] private GameObject phoneHolder;
+
+    [SerializeField] private float volume;
 
     [SerializeField] private AudioClip deadLine;
 
@@ -17,6 +18,11 @@ public class Phone  : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         phoneManager = GetComponent<PhoneManager>();
+    }
+
+    private void Start()
+    {
+        audioSource.volume = 0;
     }
 
     //get call
@@ -30,17 +36,17 @@ public class Phone  : MonoBehaviour
     {
         currentCall = call;
         phoneHolder.GetComponent<PhoneHolder>().Ring();
+        audioSource.PlayOneShot(currentCall.callSound);
     }
 
     //pick up
     public void PickUp()
     {
-        audioSource.Stop();
-        if(currentCall != null)
+        if (currentCall != null)
         {
-            audioSource.PlayOneShot(currentCall.callSound);
-            StartCoroutine(HangUpDelay());
-        } else
+            audioSource.volume = volume;
+        }
+        else
         {
             audioSource.PlayOneShot(deadLine);
         }
@@ -49,23 +55,12 @@ public class Phone  : MonoBehaviour
     //hang up
     public void HangUp()
     {
-        if (isCalling)
-        {
-            audioSource.Stop();
-            currentCall = null;
-            phoneManager.HungUp();
-            isCalling = false;
-        }
+        audioSource.volume = 0;
     }
 
     private IEnumerator waitForRing(CallObject call)
     {
         yield return new WaitForSeconds(call.waitToRing);
         Ring(call);
-    }
-    private IEnumerator HangUpDelay()
-    {
-        yield return new WaitForSeconds(hangUpDelay);
-        isCalling = true;
     }
 }

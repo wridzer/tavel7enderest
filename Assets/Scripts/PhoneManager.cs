@@ -8,20 +8,36 @@ public class PhoneManager : MonoBehaviour
     [SerializeField] private List<CallObject> callList;
     private int callCount = 0;
     private Phone phone;
+    private ListnerPhone listnerPhone;
 
     private void Awake()
     {
         phone = GetComponent<Phone>();
+        listnerPhone = GetComponent<ListnerPhone>();
     }
 
     private void Start()
     {
-        phone.GetCall(callList[callCount]);
+        if (phone != null)
+        {
+            phone.GetCall(callList[callCount]);
+        }
+        else
+        {
+            listnerPhone.GetCall(callList[callCount]);
+        }
     }
 
     public void HungUp()
     {
         callCount++;
-        phone.GetCall(callList[callCount]);
+        if (phone != null)
+        {
+            phone.GetCall(callList[callCount]);
+        }
+        else
+        {
+            listnerPhone.GetCall(callList[callCount]);
+        }
     }
 }

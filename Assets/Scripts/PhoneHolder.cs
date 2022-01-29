@@ -6,6 +6,7 @@ public class PhoneHolder : MonoBehaviour
 {
     private AudioSource audioSource;
     [SerializeField] private AudioClip hangupSound;
+    [SerializeField] private AudioClip ring;
 
     private void Start()
     {
@@ -16,7 +17,14 @@ public class PhoneHolder : MonoBehaviour
     {
         if (other.tag == "Phone")
         {
+            audioSource.Stop();
             other.gameObject.GetComponent<Phone>().HangUp();
+            audioSource.PlayOneShot(hangupSound);
+        }
+        if (other.tag == "ListnerPhone")
+        {
+            audioSource.Stop();
+            other.gameObject.GetComponent<ListnerPhone>().HangUp();
             audioSource.PlayOneShot(hangupSound);
         }
     }
@@ -25,7 +33,18 @@ public class PhoneHolder : MonoBehaviour
     {
         if(other.tag == "Phone")
         {
+            audioSource.Stop();
             other.gameObject.GetComponent<Phone>().PickUp();
         }
+        if(other.tag == "ListnerPhone")
+        {
+            audioSource.Stop();
+            other.gameObject.GetComponent<ListnerPhone>().PickUp();
+        }
+    }
+
+    public void Ring()
+    {
+        audioSource.PlayOneShot(ring);
     }
 }
