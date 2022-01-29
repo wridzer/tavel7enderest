@@ -11,7 +11,7 @@ public class Phone  : MonoBehaviour
     [SerializeField] AudioClip ring;
     [SerializeField] AudioClip deadLine;
 
-    private void OnAwake()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         phoneManager = GetComponent<PhoneManager>();
@@ -20,8 +20,7 @@ public class Phone  : MonoBehaviour
     //get call
     public void GetCall(CallObject call)
     {
-        StartCoroutine(waitForRing(call.waitToRing));
-        Ring(call);
+        StartCoroutine(waitForRing(call));
     }
 
     //ring
@@ -34,6 +33,7 @@ public class Phone  : MonoBehaviour
     //pick up
     public void PickUp()
     {
+        audioSource.Stop();
         if(currentCall != null)
         {
             audioSource.PlayOneShot(currentCall.callSound);
@@ -51,8 +51,9 @@ public class Phone  : MonoBehaviour
         phoneManager.HungUp();
     }
 
-    private IEnumerator waitForRing(float seconds)
+    private IEnumerator waitForRing(CallObject call)
     {
-        yield return new WaitForSeconds(seconds);
+        yield return new WaitForSeconds(call.waitToRing);
+        Ring(call);
     }
 }

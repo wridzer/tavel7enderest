@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class PhoneManager : MonoBehaviour
 {
-    private List<CallObject> callList;
+    [SerializeField] private List<CallObject> callList;
     private int callCount = 0;
     private Phone phone;
 
     private void Awake()
     {
-        callList.Add(Resources.Load<CallObject>("Calls"));
         phone = GetComponent<Phone>();
     }
 
