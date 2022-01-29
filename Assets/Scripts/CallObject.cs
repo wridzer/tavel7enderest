@@ -8,4 +8,5 @@ public class CallObject : ScriptableObject
         public bool IsCriminal;
         public AudioClip callSound;
         public float waitToRing;
+        public string callName;
     }

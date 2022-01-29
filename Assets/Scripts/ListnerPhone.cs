@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ListnerPhone : MonoBehaviour
 {
-    private CallObject currentCall;
+    [HideInInspector] public CallObject currentCall;
     private AudioSource audioSource;
     private PhoneManager phoneManager;
     private float hangUpDelay = 1f;
