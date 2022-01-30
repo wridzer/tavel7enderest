@@ -24,6 +24,14 @@ public class ListnerPhone : MonoBehaviour
         audioSource.volume = 0;
     }
 
+    private void Update()
+    {
+        if (!audioSource.isPlaying)
+        {
+            phoneManager.HungUp();
+        }
+    }
+
     //get call
     public void GetCall(CallObject call)
     {

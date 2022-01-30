@@ -9,8 +9,10 @@ public enum ScoreTypes{
 
 public static class ScoreKeeper
 {
+    private static int phoneDone = 0;
     private static int score;
     private static Dictionary<CallObject, ScoreTypes> scoreDict = new Dictionary<CallObject, ScoreTypes>();
+    private static List<CallObject> unReported;
 
     public static void AddScore(CallObject call)
     {
@@ -27,7 +29,20 @@ public static class ScoreKeeper
         }
     }
 
-    private static void EndGame(List<CallObject> callList)
+    public static void PhoneDone(List<CallObject> callList, GameObject endGameMenu)
+    {
+        phoneDone++;
+        foreach(CallObject call in callList)
+        {
+            unReported.Add(call);
+        }
+        if(phoneDone == 2)
+        {
+            EndGame(unReported, endGameMenu);
+        }
+    }
+
+    public static void EndGame(List<CallObject> callList, GameObject endGameMenu)
     {
         foreach(CallObject call in callList)
         {
@@ -67,5 +82,8 @@ public static class ScoreKeeper
                 score -= 2;
             }
         }
+
+        endGameMenu.SetActive(true);
+        endGameMenu.GetComponent<EndGame>().ShowHeadlines(scoreDict, score);
     }
 }

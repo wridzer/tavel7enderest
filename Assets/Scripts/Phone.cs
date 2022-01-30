@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phone  : MonoBehaviour
+public class Phone : MonoBehaviour
 {
     private CallObject currentCall;
     private AudioSource audioSource;
