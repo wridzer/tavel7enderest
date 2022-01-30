@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCriminal: 0
   callSound: {fileID: 8300000, guid: 5bbdbdc8726b5164dbe93a321c6b9fc2, type: 3}
-  waitToRing: 5
+  waitToRing: 3
   callName: Oopsie
   headlinePrefab: {fileID: 0}

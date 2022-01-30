@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCriminal: 0
   callSound: {fileID: 8300000, guid: 8426be4b66c3cc14aaf09e16361a2f6a, type: 3}
-  waitToRing: 0
+  waitToRing: 122
   callName: NSFW
   headlinePrefab: {fileID: 0}

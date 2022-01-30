@@ -5,9 +5,10 @@ public class Antenna : MonoBehaviour
 {
     [SerializeField] private GameObject[] signalPoints;
     private GameObject bestSignal;
-
+    private bool badSignal = false;
     private AudioSource audioSource;
     [SerializeField] private AudioClip distortion;
+    private float timer = 20;
 
     private void Start()
     {
@@ -20,21 +21,27 @@ public class Antenna : MonoBehaviour
         bestSignal = signalPoints[Random.Range(0, signalPoints.Length - 1)];
     }
 
-    public void GotAntenna(GameObject orb)
+    private void Update()
     {
-        if (orb != bestSignal)
+        timer -= Time.deltaTime;
+        if (timer < 0) badSignal = true;
+        if (badSignal)
         {
             DistortAudio();
         }
-        else
+    }
+
+    public void GotAntenna(GameObject orb)
+    {
+        if (orb == bestSignal)
         {
-            Debug.Log("Right one!");
+            badSignal = false;
+            timer = 1;
         }
     }
 
     private void DistortAudio()
     {
         //audioSource.PlayOneShot(distortion);
-        Debug.Log("Wrong one!");
     }
 }

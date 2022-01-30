@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCriminal: 0
   callSound: {fileID: 8300000, guid: 58419becb46c13f40b367ba4ee38e2a5, type: 3}
-  waitToRing: 5
+  waitToRing: 18
   callName: SUS
   headlinePrefab: {fileID: 0}

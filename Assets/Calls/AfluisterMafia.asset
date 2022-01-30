@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCriminal: 0
   callSound: {fileID: 8300000, guid: 4e1177ea737b0074e9b9edf1752ac482, type: 3}
-  waitToRing: 5
+  waitToRing: 3
   callName: Mafia
   headlinePrefab: {fileID: 0}

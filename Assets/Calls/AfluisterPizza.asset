@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCriminal: 0
   callSound: {fileID: 8300000, guid: 750de99d53d5cfa4eb9d9ae08a4c2988, type: 3}
-  waitToRing: 5
+  waitToRing: 3
   callName: Pizza
   headlinePrefab: {fileID: 0}

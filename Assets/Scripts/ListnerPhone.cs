@@ -12,6 +12,8 @@ public class ListnerPhone : MonoBehaviour
     [SerializeField] private float volume;
 
     [SerializeField] private AudioClip deadLine;
+    [SerializeField] private float maxDistance;
+    [SerializeField] private Vector3 startPos;
 
     private void Awake()
     {
@@ -26,9 +28,14 @@ public class ListnerPhone : MonoBehaviour
 
     private void Update()
     {
-        if (!audioSource.isPlaying)
+        if (!audioSource.isPlaying && currentCall != null)
         {
             phoneManager.HungUp();
+            currentCall = null;
+        }
+        if (Vector3.Distance(transform.position, phoneHolder.transform.position) > maxDistance)
+        {
+            transform.position = startPos;
         }
     }
 

@@ -7,14 +7,13 @@ public class PhoneManager : MonoBehaviour
 {
     [SerializeField] private List<CallObject> callList;
     private int callCount = 0;
-    private bool done = false;
     private Phone phone;
     private ListnerPhone listnerPhone;
     [SerializeField] private GameObject antenna, endGameMenu;
 
     private void Awake()
     {
-        phone = GetComponent<Phone>();
+        phone = GetComponent<Phone>( );
         listnerPhone = GetComponent<ListnerPhone>();
     }
 
@@ -33,18 +32,21 @@ public class PhoneManager : MonoBehaviour
     public void HungUp()
     {
         callCount++;
-        if(callCount == callList.Count)
+
+        if (phone != null)
         {
-            ScoreKeeper.PhoneDone(callList, endGameMenu);
-            done = true;
-        }
-        if (!done)
-        {
-            if (phone != null)
+            if(callCount !>= callList.Count)
             {
                 phone.GetCall(callList[callCount]);
             }
-            else
+        }
+        else
+        {
+            if (callCount == callList.Count)
+            {
+                ScoreKeeper.PhoneDone(callList, endGameMenu);
+            } 
+            if (callCount < callList.Count)
             {
                 //signal update
                 antenna.GetComponent<Antenna>().NewSignal();

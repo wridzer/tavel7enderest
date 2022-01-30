@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AfluisterHarbour
   m_EditorClassIdentifier: 
   IsCriminal: 0
-  callSound: {fileID: 8300000, guid: e7989f98c39195b4a89d7ca410038989, type: 3}
-  waitToRing: 5
+  callSound: {fileID: 8300000, guid: c784b168baeabc44f8d814a18b5cef0f, type: 3}
+  waitToRing: 3
   callName: Harbour
   headlinePrefab: {fileID: 0}

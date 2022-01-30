@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SignalOrb : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Antenna")
         {

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCriminal: 0
   callSound: {fileID: 8300000, guid: 236fa6a10fe0d454aaef878af066252e, type: 3}
-  waitToRing: 5
+  waitToRing: 3
   callName: Water
   headlinePrefab: {fileID: 0}

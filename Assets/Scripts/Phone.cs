@@ -12,6 +12,8 @@ public class Phone : MonoBehaviour
     [SerializeField] private GameObject phoneHolder;
 
     [SerializeField] private AudioClip deadLine;
+    [SerializeField] private float maxDistance;
+    [SerializeField] private Vector3 startPos;
 
     private void Awake()
     {
@@ -67,5 +69,13 @@ public class Phone : MonoBehaviour
     {
         yield return new WaitForSeconds(hangUpDelay);
         isCalling = true;
+    }
+
+    private void Update()
+    {
+        if(Vector3.Distance(transform.position, phoneHolder.transform.position) > maxDistance)
+        {
+            transform.position = startPos;
+        }
     }
 }
