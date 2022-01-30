@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phone  : MonoBehaviour
+public class Phone : MonoBehaviour
 {
     private CallObject currentCall;
     private AudioSource audioSource;
     private PhoneManager phoneManager;
+    private bool isCalling = false;
+    private float hangUpDelay = 1f;
+    [SerializeField] private GameObject phoneHolder;
 
-    [SerializeField] AudioClip ring;
-    [SerializeField] AudioClip deadLine;
+    [SerializeField] private AudioClip deadLine;
 
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class Phone  : MonoBehaviour
     public void Ring(CallObject call)
     {
         currentCall = call;
-        audioSource.PlayOneShot(ring);
+        phoneHolder.GetComponent<PhoneHolder>().Ring();
     }
 
     //pick up
@@ -37,6 +39,7 @@ public class Phone  : MonoBehaviour
         if(currentCall != null)
         {
             audioSource.PlayOneShot(currentCall.callSound);
+            StartCoroutine(HangUpDelay());
         } else
         {
             audioSource.PlayOneShot(deadLine);
@@ -46,14 +49,23 @@ public class Phone  : MonoBehaviour
     //hang up
     public void HangUp()
     {
-        audioSource.Stop();
-        currentCall = null;
-        phoneManager.HungUp();
+        if (isCalling)
+        {
+            audioSource.Stop();
+            currentCall = null;
+            phoneManager.HungUp();
+            isCalling = false;
+        }
     }
 
     private IEnumerator waitForRing(CallObject call)
     {
         yield return new WaitForSeconds(call.waitToRing);
         Ring(call);
+    }
+    private IEnumerator HangUpDelay()
+    {
+        yield return new WaitForSeconds(hangUpDelay);
+        isCalling = true;
     }
 }

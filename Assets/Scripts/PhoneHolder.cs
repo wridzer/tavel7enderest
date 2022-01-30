@@ -6,37 +6,45 @@ public class PhoneHolder : MonoBehaviour
 {
     private AudioSource audioSource;
     [SerializeField] private AudioClip hangupSound;
-
-    [SerializeField] private float hangUpDelay = 2;
-    private float timer;
+    [SerializeField] private AudioClip ring;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        timer = hangUpDelay;
-    }
-
-    private void Update()
-    {
-        timer -= Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Phone" && timer <= 0)
+        if (other.tag == "Phone")
         {
+            audioSource.Stop();
             other.gameObject.GetComponent<Phone>().HangUp();
             audioSource.PlayOneShot(hangupSound);
-            timer = hangUpDelay;
+        }
+        if (other.tag == "ListnerPhone")
+        {
+            audioSource.Stop();
+            other.gameObject.GetComponent<ListnerPhone>().HangUp();
+            audioSource.PlayOneShot(hangupSound);
         }
     }
     
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Phone" && timer <= 0)
+        if(other.tag == "Phone")
         {
+            audioSource.Stop();
             other.gameObject.GetComponent<Phone>().PickUp();
-            timer = hangUpDelay;
         }
+        if(other.tag == "ListnerPhone")
+        {
+            audioSource.Stop();
+            other.gameObject.GetComponent<ListnerPhone>().PickUp();
+        }
+    }
+
+    public void Ring()
+    {
+        audioSource.PlayOneShot(ring);
     }
 }
