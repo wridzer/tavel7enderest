@@ -9,6 +9,7 @@ public class PhoneManager : MonoBehaviour
     private int callCount = 0;
     private Phone phone;
     private ListnerPhone listnerPhone;
+    [SerializeField] private GameObject antenna;
 
     private void Awake()
     {
@@ -37,6 +38,8 @@ public class PhoneManager : MonoBehaviour
         }
         else
         {
+            //signal update
+            antenna.GetComponent<Antenna>().NewSignal();
             listnerPhone.GetCall(callList[callCount]);
         }
     }

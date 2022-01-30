@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Phone
   - ListnerPhone
+  - Antenna
   layers:
   - Default
   - TransparentFX

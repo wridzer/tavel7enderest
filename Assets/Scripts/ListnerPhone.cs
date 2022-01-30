@@ -7,7 +7,6 @@ public class ListnerPhone : MonoBehaviour
     [HideInInspector] public CallObject currentCall;
     private AudioSource audioSource;
     private PhoneManager phoneManager;
-    private float hangUpDelay = 1f;
     [SerializeField] private GameObject phoneHolder;
 
     [SerializeField] private float volume;

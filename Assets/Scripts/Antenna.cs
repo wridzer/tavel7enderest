@@ -26,10 +26,15 @@ public class Antenna : MonoBehaviour
         {
             DistortAudio();
         }
+        else
+        {
+            Debug.Log("Right one!");
+        }
     }
 
     private void DistortAudio()
     {
-        audioSource.PlayOneShot(distortion);
+        //audioSource.PlayOneShot(distortion);
+        Debug.Log("Wrong one!");
     }
 }
