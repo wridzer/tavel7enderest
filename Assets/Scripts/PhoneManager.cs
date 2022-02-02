@@ -35,7 +35,7 @@ public class PhoneManager : MonoBehaviour
 
         if (phone != null)
         {
-            if(callCount !>= callList.Count)
+            if(callCount < callList.Count)
             {
                 phone.GetCall(callList[callCount]);
             }

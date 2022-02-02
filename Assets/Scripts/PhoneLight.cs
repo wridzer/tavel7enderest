@@ -20,7 +20,6 @@ public class PhoneLight : MonoBehaviour
         if (flash)
         {
             StartCoroutine(FlashOn());
-            StartCoroutine(FlashOff());
         }
     }
 
@@ -28,6 +27,7 @@ public class PhoneLight : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         phoneLight.enabled = true;
+        StartCoroutine(FlashOff());
     }
 
     private IEnumerator FlashOff()

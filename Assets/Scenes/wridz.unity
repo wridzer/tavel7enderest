@@ -2048,7 +2048,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49119278}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2, z: 1.32}
@@ -13498,7 +13498,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &298791987
 MonoBehaviour:
@@ -22577,7 +22577,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513189470}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2, z: 1.32}
@@ -25056,7 +25056,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576916101}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2, z: 1.32}
@@ -28668,7 +28668,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641222585}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2, z: 1.32}
@@ -60831,7 +60831,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454358537}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2, z: 1.32}
@@ -87853,7 +87853,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2078399163
 MonoBehaviour:
@@ -88222,7 +88222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phoneHolder: {fileID: 94605807}
   deadLine: {fileID: 8300000, guid: c3798722696396648b53d064d208b85d, type: 3}
-  maxDistance: 20
+  maxDistance: 5
   startPos: {x: 2.1462548, y: 0.80417645, z: -0.22330466}
 --- !u!82 &2082512413
 AudioSource:
@@ -89719,7 +89719,7 @@ MonoBehaviour:
   phoneHolder: {fileID: 200604804}
   volume: 0.5
   deadLine: {fileID: 8300000, guid: c3798722696396648b53d064d208b85d, type: 3}
-  maxDistance: 20
+  maxDistance: 5
   startPos: {x: 2.965061, y: 0.79907656, z: -0.20592472}
 --- !u!114 &2112919609
 MonoBehaviour:
